@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  header .logo {
+    font-size: 24px;
+  }
+  
+  header nav ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  header nav ul li {
+    margin-left: 20px;
+  }
+  
+  header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 50px;
+    background-color: #f0f0f0;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .upload-box {
+    border: 2px dashed #ccc;
+    padding: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .upload-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .conversion-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .convert-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .popular-conversions {
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .conversion-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .conversion-card {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .how-it-works {
+    padding: 50px;
+    text-align: center;
+    background-color: #f8f8f8;
+  }
+  
+  .steps {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .step {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 150px;
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .footer-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
