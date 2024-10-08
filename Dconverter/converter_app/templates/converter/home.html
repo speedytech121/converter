@@ -6,6 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>File Converter | Home</title>
   <link rel="stylesheet" href="{% static 'converter/styles.css' %}">
+  <style>
+    .conversion-options {
+      display: none;
+      margin-top: 20px;
+    }
+    .convert-btn {
+      display: inline-block;
+      padding: 10px 15px;
+      margin: 5px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .convert-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -25,42 +44,27 @@
       <h1>Convert Your Files Effortlessly</h1>
       <p>Drag and drop your file or click to upload and convert to popular formats.</p>
       <div class="upload-box">
-        <button class="upload-btn">Choose File</button>
-        <p>Or drop your files here</p>
+        <label for="file-upload" class="upload-btn">Choose File</label>
+        <input type="file" id="file-upload" style="display: none;">
+        <p id="file-name" style="margin-top:20px; margin-bottom:20px;"></p>
+        <p id="file-info">Or drop your files here</p>
       </div>
-      <div class="conversion-options">
+
+      <!-- Conversion buttons for specific file types -->
+      <div class="conversion-options" id="pdf-options">
         <button class="convert-btn">PDF to DOC</button>
-        <button class="convert-btn">DOC to PDF</button>
-        <button class="convert-btn">JPG to PDF</button>
+        <button class="convert-btn">PDF to Image</button>
         <button class="convert-btn">PDF to JPG</button>
       </div>
-    </div>
-  </section>
 
-  <section class="popular-conversions">
-    <h2>Popular Conversions</h2>
-    <div class="conversion-grid">
-      <div class="conversion-card">Compress PDF</div>
-      <div class="conversion-card">Merge PDF</div>
-      <div class="conversion-card">Split PDF</div>
-      <div class="conversion-card">PDF to Excel</div>
-    </div>
-  </section>
+      <div class="conversion-options" id="doc-options">
+        <button class="convert-btn">DOC to PDF</button>
+        <button class="convert-btn">DOC to TXT</button>
+      </div>
 
-  <section class="how-it-works">
-    <h2>How It Works</h2>
-    <div class="steps">
-      <div class="step">
-        <span>1</span>
-        <p>Upload Your File</p>
-      </div>
-      <div class="step">
-        <span>2</span>
-        <p>Select Format</p>
-      </div>
-      <div class="step">
-        <span>3</span>
-        <p>Download File</p>
+      <div class="conversion-options" id="image-options">
+        <button class="convert-btn">JPG to PDF</button>
+        <button class="convert-btn">PNG to PDF</button>
       </div>
     </div>
   </section>
@@ -73,5 +77,48 @@
     </div>
     <p>&copy; 2024 FileConverter. All rights reserved.</p>
   </footer>
+
+  <script>
+    const fileInput = document.getElementById('file-upload');
+    const fileNameDisplay = document.getElementById('file-name');
+
+    const pdfOptions = document.getElementById('pdf-options');
+    const docOptions = document.getElementById('doc-options');
+    const imageOptions = document.getElementById('image-options');
+
+    // Hide all conversion options
+    function hideAllOptions() {
+      pdfOptions.style.display = 'none';
+      docOptions.style.display = 'none';
+      imageOptions.style.display = 'none';
+    }
+
+    // Event listener for file input change
+    fileInput.addEventListener('change', function() {
+      const file = fileInput.files[0];
+      const fileName = file?.name || "No file selected";
+      fileNameDisplay.textContent = fileName;
+
+      if (file) {
+          document.getElementById('file-info').style.display = 'none';
+      }else{
+        document.getElementById('file-info').style.display = 'block';
+      }
+      // Get file extension
+      const fileExtension = fileName.split('.').pop().toLowerCase();
+
+      // Hide all conversion options initially
+      hideAllOptions();
+
+      // Show conversion options based on file type
+      if (fileExtension === 'pdf') {
+        pdfOptions.style.display = 'block';
+      } else if (fileExtension === 'doc' || fileExtension === 'docx') {
+        docOptions.style.display = 'block';
+      } else if (fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'png') {
+        imageOptions.style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>
